@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentBoxComponent implements OnInit {
   // Button labels - there has to be a better way to do this lol
-  pomodoroLabel = "POMODORO";
-  shortBreakLabel = "SHORT BREAK";
-  longBreakLabel = "LONG BREAK";
+  pomodoroLabel = "Pomodoro";
+  shortBreakLabel = "Short break";
+  longBreakLabel = "Long break";
 
   constructor() { }
 

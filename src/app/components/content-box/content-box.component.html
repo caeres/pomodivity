@@ -2,9 +2,9 @@
 + Buttons to swap between the intervals -> These would prolly make sense to be designed as components (would be reusable in larger projects)
 + Timer -> No extra component, even if I expand on this project, I dont see any reason to need more than one timer
 + Button to start timer -> No extra component, only one in use? 
-[label]="label"
+
 I want to slighty change the design tho, maybe buttons to the side and they disappear with an animation when you start the timer, while the timer gets somewhat larger? 
-(I would like to get away from blatantly copying pomofocus.io)-->
+(I would like to get away from blatantly copying pomofocus.io lmao)-->
 
 <div class="box-wrapper">
     <div class="timer-display">
@@ -13,8 +13,7 @@ I want to slighty change the design tho, maybe buttons to the side and they disa
             <app-timer-button [label]="shortBreakLabel"></app-timer-button>
             <app-timer-button [label]="longBreakLabel"></app-timer-button>
         </div>
-
-        <div class="timer"></div> 
+        <div class="timer">99:99</div> 
         <div class="btn-start-wrapper">
             <button class="btn-start">Start</button>
         </div>
