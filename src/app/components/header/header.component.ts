@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsDialogComponent } from '../settings-dialog/settings-dialog.component';
-import {MatDialog, MatDialogConfig} from "@angular/material";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-header',
@@ -9,17 +9,17 @@ import {MatDialog, MatDialogConfig} from "@angular/material";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
+  
+  openDialog(): void {
+    const dialogRef = this.dialog.open(SettingsDialogComponent, {
+      width: "250px"
+    });
 
-  openDialog() {
-
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-
-    this.dialog.open(CourseDialogComponent, dialogConfig);
-}
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 
   ngOnInit(): void {
   }
