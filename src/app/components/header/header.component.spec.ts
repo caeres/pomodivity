@@ -5,6 +5,10 @@ import { HeaderComponent } from './header.component';
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
+  // let dialogRef = dialog.open(SettingsDialogComponent, {
+  //   height: '400px',
+  //   width: '600px'
+  // })
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

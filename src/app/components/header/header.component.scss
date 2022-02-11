@@ -1,0 +1,27 @@
+.header-wrapper
+{
+    height: 64px;
+    max-width: 640px;
+    margin: 0 auto 32px auto;
+    border-bottom: solid black 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .header-title
+    {
+        font-size: 32px;
+        padding: 5px 0;
+        align-self: center;
+    }   
+    .header-btn
+    {
+        cursor: pointer;
+        height: 32px;
+        padding: 0 20px;
+        border-radius: 5px;
+        border: none;
+        align-self: center;
+        font-size: 16px;
+    }
+}
