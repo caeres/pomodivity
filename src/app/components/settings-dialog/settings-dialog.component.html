@@ -1,4 +1,24 @@
-<h1 mat-dialog-title>Hi</h1>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
+<div class="settings-dialog-header">
+  <h1 mat-dialog-title>Timer Settings (in minutes)</h1>
+  <button class="settings-dialog-close-btn" (click)="onDismiss()">
+    <span>&times;</span>
+  </button>
 </div>
+<div mat-dialog-content class="settings-dialog-content"> 
+    <div class="settings-dialog-timer">
+        <div>Pomodoro:</div>
+        <input type="number" value="25">
+    </div>
+    <div class="settings-dialog-timer">
+      <div>Short break:</div>
+      <input type="number" value="5">
+    </div>
+    <div class="settings-dialog-timer">
+      <div>Long break:</div>
+      <input type="number" value="10">
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button class="settings-dialog-save-btn" (click)="onClickSave()">Save Settings</button>
+</div>
+

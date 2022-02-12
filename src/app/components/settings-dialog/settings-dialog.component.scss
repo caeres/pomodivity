@@ -1,0 +1,53 @@
+.settings-dialog-header
+{
+    display: flex;
+    justify-content: space-between;
+
+    .settings-dialog-close-btn
+    {
+        height: 8px;
+        cursor: pointer;
+        border: none;
+        float: right;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        opacity: .5;
+        background-color: #fff;
+    }
+}
+
+.settings-dialog-content
+{
+    padding: 24px;
+}
+
+.settings-dialog-timer
+{
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+    padding: 2px 32px;
+
+    input
+    {
+        width: 64px;
+        text-align: center;
+    }
+}
+
+.settings-dialog-save-btn
+{
+    margin: 8px 0 0 0;
+    width: 120px;
+    height: 3rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color 0.5s ease-in-out 0s;
+    box-shadow: none;
+    font-size: 16px;
+}

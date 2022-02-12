@@ -1,3 +1,6 @@
+// i will need to look at this later
+
+
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
@@ -43,6 +46,5 @@ $pomodivity-theme: mat.define-light-theme((
 
 html, body{
     font-family: var(--font-base);
+    height: 100%;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

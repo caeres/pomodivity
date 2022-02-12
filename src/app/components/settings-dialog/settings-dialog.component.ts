@@ -13,9 +13,15 @@ export class SettingsDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<HeaderComponent>
   ) { }
 
-  onNoClick(): void {
+  onDismiss(): void {
     this.dialogRef.close();
   }
+
+  // save settings, :VOID is gonna be wrong then
+  onClickSave(): void {
+    this.dialogRef.close();
+  }
+  
 
   ngOnInit(): void {
   }
