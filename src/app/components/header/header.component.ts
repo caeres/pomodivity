@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   
   openDialog(): void {
     const dialogRef = this.dialog.open(SettingsDialogComponent, {
-      width: "250px"
+      width: "480px"
     });
 
     dialogRef.afterClosed().subscribe(result => {
