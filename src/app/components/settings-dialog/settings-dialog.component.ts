@@ -21,7 +21,6 @@ export class SettingsDialogComponent implements OnInit {
   onClickSave(): void {
     this.dialogRef.close();
   }
-  
 
   ngOnInit(): void {
   }
