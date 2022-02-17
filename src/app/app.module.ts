@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +13,9 @@ import { TimerButtonComponent } from './components/timer-button/timer-button.com
 import { HeaderComponent } from './components/header/header.component';
 import { SettingsDialogComponent } from './components/settings-dialog/settings-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// delete or make usable in the future
+import { ConvertTimePipe } from './pipes/convert-time.pipe';
+
 
 @NgModule({
   declarations: [
@@ -23,9 +29,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ConvertTimePipe],
   bootstrap: [AppComponent],
   entryComponents: [SettingsDialogComponent]
 })

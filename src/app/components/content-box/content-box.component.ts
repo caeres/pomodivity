@@ -1,4 +1,5 @@
-import { Component, Input,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TimerStateService, TimerType } from 'src/app/services/timer-state.service';
 
 @Component({
   selector: 'app-content-box',
@@ -12,11 +13,21 @@ export class ContentBoxComponent implements OnInit {
   shortBreakLabel = "Short break";
   longBreakLabel = "Long break";
 
-  @Input() time = 0;
-
-  constructor() { }
-
+  constructor(public timer: TimerStateService) { }
   ngOnInit(): void {
   }
-
+  
+  // maybe this can be done in one function but ill do it with three for now (has to be hardcoded somewhere i guess)
+  onClickPomodoro() {
+    this.timer.currentType = TimerType.pomodoro;
+    this.timer.currentTimeMs = this.timer.durationMsPomodoro; 
+  }
+  onClickShort() {
+    this.timer.currentType = TimerType.short;
+    this.timer.currentTimeMs = this.timer.durationMsShort;
+  }
+  onClickLong() {
+    this.timer.currentType = TimerType.long;
+    this.timer.currentTimeMs = this.timer.durationMsLong;
+  }
 }
