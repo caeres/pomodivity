@@ -1,1 +1,86 @@
+// i will need to look at this later
+
+
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+$paused-palette: (
+  50 : #e9f9fa,
+  100 : #c8f0f3,
+  200 : #a4e6eb,
+  300 : #80dce2,
+  400 : #64d5dc,
+  500 : #49cdd6,
+  600 : #42c8d1,
+  700 : #39c1cc,
+  800 : #31bac6,
+  900 : #21aebc,
+  A100 : #f6feff,
+  A200 : #c3f9ff,
+  A400 : #90f4ff,
+  A700 : #76f2ff,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #000000,
+      700 : #000000,
+      800 : #000000,
+      900 : #000000,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+$pomodivity-primary: mat.define-palette(mat.$indigo-palette);
+$pomodivity-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$pomodivity-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$pomodivity-theme: mat.define-light-theme((
+  color: (
+    primary: $pomodivity-primary,
+    accent: $pomodivity-accent,
+    warn: $pomodivity-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($pomodivity-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+
+:root{
+    --font-base: 'Lato', sans-serif;
+    --pomo-bg-color: #84a98c;
+    --pomo-accent-color: #cad2c5;
+    // colors
+}
+
+html, body{
+    font-family: var(--font-base);
+    height: 100%;
+    background-color: var(--pomo-bg-color);
+}

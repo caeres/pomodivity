@@ -1,0 +1,25 @@
+<!-- Parts of this component:
++ Buttons to swap between the intervals -> These would prolly make sense to be designed as components (would be reusable in larger projects)
++ Timer -> No extra component, even if I expand on this project, I dont see any reason to need more than one timer
++ Button to start timer -> No extra component, only one in use? 
+
+I want to slighty change the design tho, maybe buttons to the side and they disappear with an animation when you start the timer, while the timer gets somewhat larger? 
+(I would like to get away from blatantly copying pomofocus.io lmao)-->
+
+<div class="box-wrapper">
+    <div class="timer-display">
+        <div class="timer-settings">
+            <app-timer-button [label]="pomodoroLabel" (click)="onClickPomodoro()"></app-timer-button>
+            <app-timer-button [label]="shortBreakLabel" (click)="onClickShort()"></app-timer-button>
+            <app-timer-button [label]="longBreakLabel" (click)="onClickLong()"></app-timer-button>
+        </div>
+        <div class="timer">
+            {{timer.currentTimeMs|date:"mm:ss"}}
+        </div> 
+        <!-- evtl mit dem animierten progress bar -->
+        <!-- <mat-progress-bar mode="determinate" [value]="40"></mat-progress-bar>  -->
+        <div class="btn-start-wrapper">
+            <button class="btn-start" (click)="timer.interactStartButton()">Start</button>
+        </div>
+    </div>
+</div>

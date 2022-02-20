@@ -1,0 +1,38 @@
+.box-wrapper
+{
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 12px 24px;
+
+    background-color: var(--pomo-accent-color);
+}
+
+.timer
+{
+    font-size: 110px;
+    font-weight: bold;
+    border-bottom: solid 2px black;
+    width: 100%;
+    margin: 50px 0px 50px 0px;
+}
+
+.btn-start-wrapper{
+    box-sizing: border-box;
+    display: block;
+    margin-top: 12px;
+}
+
+.btn-start
+{
+    margin: 8px 0 20px 0;
+    padding: 10px 15px;
+    line-height: 1.5;
+    width: 150px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: color 0.5s ease-in-out 0s;
+    cursor: pointer;
+
+    background-color: aliceblue;
+}
