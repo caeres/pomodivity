@@ -13,6 +13,7 @@ export class TimerStateService{
   public durationMsLong = 10*60*1000;
   public currentTimeMs = this.durationMsPomodoro;
   
+  // dont thionk i have to do this in a function timer alsawys happy
   public timer = new Timer({interval: 1000, stopwatch: false});
   //always start on pomodoro setting
   public currentType = TimerType.pomodoro;
@@ -47,12 +48,6 @@ export class TimerStateService{
         console.log("timer was started, state now true")
     }
   }
-
-  // kommunikation: aktuell nur ein funktionscall, frontend weiß neueen state nicht -> ipdate view auch hier wieder
-  // RXjS -> Statemanagement, streams (in ner stream-var der timerState -> bei änderung stream.send -> aktueller state wird verschickt (das sind die observerables buddy))
-  /* behviorsubject hier prolly -> start state kann eingegeben werden
-  innerhalb einer c */
-
 
   //muss jetzt eig nciht mehr ausgelagert werden, da durch timer ablauf der auch automatisch abgeschafft wird (keine neue creation nötig)
   constructor() {

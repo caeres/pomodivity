@@ -1,10 +1,16 @@
-button{
+button
+{
     font: var(--font-base);
-    margin: 0 4px;
+    margin: 10px 4px 0 4px;
     cursor: pointer;
     padding: 10px 5px;
     font-size: 18px;
     border-radius: 5px;
+    border: none;
+    background-color: var(--pomo-accent-color);
+}
 
-    background-color: darkgrey;
+button:focus{
+    background-color: var(--darkish-grey);
+    transform: translateY(4px);
 }

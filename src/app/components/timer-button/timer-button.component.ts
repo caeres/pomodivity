@@ -11,6 +11,6 @@ export class TimerButtonComponent implements OnInit {
 
   @Input() label = "default string";
 
-  constructor(private timerState: TimerStateService) { }
+  constructor(private timer: TimerStateService) { }
   ngOnInit(): void {  }
 }
