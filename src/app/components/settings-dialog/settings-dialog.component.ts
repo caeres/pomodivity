@@ -30,19 +30,19 @@ export class SettingsDialogComponent implements OnInit {
     if (this.pomoCheck.hasError('required')) {
       return 'You must enter a value';
     }
-    return this.pomoCheck.hasError('pattern') ? 'Enter a number between 1 and 60' : '';
+    return this.pomoCheck.hasError('pattern') ? 'Number between 1 and 60' : '';
   }
   getShortErrorMessage() {
     if (this.shortCheck.hasError('required')) {
       return 'You must enter a value';
     }
-    return this.shortCheck.hasError('pattern') ? 'Enter a number between 1 and 60' : '';
+    return this.shortCheck.hasError('pattern') ? 'Number between 1 and 60' : '';
   }
   getLongErrorMessage() {
     if (this.longCheck.hasError('required')) {
       return 'You must enter a value';
     }
-    return this.longCheck.hasError('pattern') ? 'Enter a number between 1 and 60' : '';
+    return this.longCheck.hasError('pattern') ? 'Number between 1 and 60' : '';
   }
   // on click with errors -> animation
   onClickSave(pomoValue : string, shortValue : string, longValue : string): void {
@@ -74,6 +74,7 @@ export class SettingsDialogComponent implements OnInit {
       } else {
         this.timer.currentTimeMs = this.timer.durationMsLong;
       }
+      this.timer.killTimer();
     }
   }
   onDismiss(): void {

@@ -72,6 +72,11 @@ export class TimerStateService{
     }
   }
 
+  // when settings change while timer was running: reset timer
+  killTimer() {
+    this.timer.stop();
+  }
+
   //muss jetzt eig nciht mehr ausgelagert werden, da durch timer ablauf der auch automatisch abgeschafft wird (keine neue creation nötig)
   constructor() {
     this.timer.on('tick', (ms) => {
