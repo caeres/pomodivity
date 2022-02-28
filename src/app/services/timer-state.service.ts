@@ -1,17 +1,23 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import Timer from 'tiny-timer';
+
+const standardDurationMsPomodoro = 25*60*1000;
+const standardDurationMsShort = 5*60*1000;
+const standardDurationMsLong = 10*60*1000;
 
 @Injectable({
   providedIn: 'root'
 })
 
+
 export class TimerStateService{
 
   public isTimerRunning = false;
-  public durationMsPomodoro = 25*60*1000;
-  public durationMsShort = 5*60*1000;
-  public durationMsLong = 10*60*1000;
-  public currentTimeMs = this.durationMsPomodoro;
+  public durationMsPomodoro: number;
+  public durationMsShort: number;
+  public durationMsLong: number;
+  public currentTimeMs: number;
   
   // dont thionk i have to do this in a function timer alsawys happy
   public timer = new Timer({interval: 1000, stopwatch: false});
@@ -31,6 +37,23 @@ export class TimerStateService{
       
         return this.durationMsLong;
     }
+  }
+  // set userDurationMsPomodoro(durationUpdate: number) {
+  //   this.durationMsPomodoro = durationUpdate;
+  //   localStorage.setItem("userDurationMsPomodoro", durationUpdate.toString());
+  // }
+
+  userDurationMsPomodoro(durationMsUpdate: number) {
+    this.durationMsPomodoro = durationMsUpdate;
+    localStorage.setItem("userDurationMsPomodoro", durationMsUpdate.toString());
+  }
+  userDurationMsShort(durationMsUpdate: number) {
+    this.durationMsShort = durationMsUpdate;
+    localStorage.setItem("userDurationMsShort", durationMsUpdate.toString());
+  }
+  userDurationMsLong(durationMsUpdate: number) {
+    this.durationMsLong = durationMsUpdate;
+    localStorage.setItem("userDurationMsLong", durationMsUpdate.toString());
   }
 
   interactStartButton() {
@@ -57,8 +80,23 @@ export class TimerStateService{
     this.timer.on('done', () => {
       console.log("timer done");
     });
+    if (localStorage.getItem("userDurationMsPomodoro") != null) {
+      this.durationMsPomodoro = parseInt(JSON.parse(localStorage.getItem("userDurationMsPomodoro")!));
+    } else {
+      this.durationMsPomodoro = standardDurationMsPomodoro;
+    }
+    if (localStorage.getItem("userDurationMsShort") != null) {
+      this.durationMsShort = parseInt(JSON.parse(localStorage.getItem("userDurationMsShort")!));
+    } else {
+      this.durationMsShort = standardDurationMsShort;
+    }
+    if (localStorage.getItem("userDurationMsLong") != null) {
+      this.durationMsLong = parseInt(JSON.parse(localStorage.getItem("userDurationMsLong")!));
+    } else {
+      this.durationMsLong = standardDurationMsLong;
+    }
+    this.currentTimeMs = this.durationMsPomodoro;
   }
-
 }
 
 // enums existieren auf klassenlevel -> exports.keyword, ist syntaxsugar, die drei zahlen sind theoretisch auch gleichzeitig der default

@@ -52,9 +52,9 @@ export class SettingsDialogComponent implements OnInit {
       //  angry wiggle soon
      }
     else {
-      this.timer.durationMsPomodoro = this.minuteToMsPipe.transform(parseInt(pomoValue));
-      this.timer.durationMsShort = this.minuteToMsPipe.transform(parseInt(shortValue));
-      this.timer.durationMsLong = this.minuteToMsPipe.transform(parseInt(longValue));
+      this.timer.userDurationMsPomodoro(this.minuteToMsPipe.transform(parseInt(pomoValue)));
+      this.timer.userDurationMsShort(this.minuteToMsPipe.transform(parseInt(shortValue)));
+      this.timer.userDurationMsLong(this.minuteToMsPipe.transform(parseInt(longValue)));
       console.log("The timer settings have been updated")
       this.dialogRef.close();
       // update currently shown timer -> check which timer is active, switch display to current timer duration
