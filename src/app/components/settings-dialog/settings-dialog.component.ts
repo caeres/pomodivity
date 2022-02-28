@@ -57,16 +57,6 @@ export class SettingsDialogComponent implements OnInit {
       this.timer.userDurationMsLong(this.minuteToMsPipe.transform(parseInt(longValue)));
       console.log("The timer settings have been updated")
       this.dialogRef.close();
-      // update currently shown timer -> check which timer is active, switch display to current timer duration
-      // didint work cuz no return statements? help me oh great phillip
-      // switch(this.timer.currentType) {
-      //   case TimerType.pomodoro: 
-      //     this.timer.currentTimeMs = this.timer.durationMsPomodoro;
-      //   case TimerType.short:
-      //     this.timer.currentTimeMs = this.timer.durationMsShort;
-      //   case TimerType.long:
-      //     this.timer.currentTimeMs = this.timer.durationMsLong;
-      // }
       if (this.timer.currentType == TimerType.pomodoro) {
         this.timer.currentTimeMs = this.timer.durationMsPomodoro;
       } else if (this.timer.currentType == TimerType.short) {

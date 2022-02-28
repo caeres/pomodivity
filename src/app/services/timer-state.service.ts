@@ -1,6 +1,7 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import Timer from 'tiny-timer';
+import { ContentBoxComponent } from '../components/content-box/content-box.component';
 
 const standardDurationMsPomodoro = 25*60*1000;
 const standardDurationMsShort = 5*60*1000;
@@ -14,6 +15,8 @@ const standardDurationMsLong = 10*60*1000;
 export class TimerStateService{
 
   public isTimerRunning = false;
+  // iffy
+  public timerJustFinished = false;
   public durationMsPomodoro: number;
   public durationMsShort: number;
   public durationMsLong: number;
@@ -70,6 +73,7 @@ export class TimerStateService{
         this.isTimerRunning = true;
         console.log("timer was started, state now true")
     }
+    this.timerJustFinished = false;
   }
 
   // when settings change while timer was running: reset timer
@@ -83,6 +87,8 @@ export class TimerStateService{
       this.currentTimeMs = ms;
     });
     this.timer.on('done', () => {
+      this.currentTimeMs = this.durationMs;
+      this.timerJustFinished = true;
       console.log("timer done");
     });
     if (localStorage.getItem("userDurationMsPomodoro") != null) {
