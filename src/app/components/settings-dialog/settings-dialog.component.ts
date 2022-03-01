@@ -5,7 +5,6 @@ import { HeaderComponent } from '../header/header.component';
 import { FormControl, Validators } from '@angular/forms';
 import { ConvertTimePipe } from 'src/app/pipes/convert-time.pipe';
 
-
 @Component({
   selector: 'app-settings-dialog',
   templateUrl: './settings-dialog.component.html',
@@ -13,10 +12,14 @@ import { ConvertTimePipe } from 'src/app/pipes/convert-time.pipe';
 })
 export class SettingsDialogComponent implements OnInit {
 
+  
   // pretty sure a simple formGroup wouldve been possible as well but i cannot be arsed rn tbh
   pomoCheck = new FormControl('', [Validators.required, Validators.pattern('^([1-9]|[1-5][0-9]|60])$')]);
   shortCheck = new FormControl('', [Validators.required, Validators.pattern('^([1-9]|[1-5][0-9]|60])$')]);
   longCheck = new FormControl('', [Validators.required, Validators.pattern('^([1-9]|[1-5][0-9]|60])$')]);
+
+  errorMessageTextRequired = "Please enter a value.";
+  errorMessageTextPattern = "Number between 1 and 60."; 
 
   constructor(
     public dialogRef: MatDialogRef<HeaderComponent>,
@@ -26,28 +29,22 @@ export class SettingsDialogComponent implements OnInit {
   ngOnInit(): void {  }
 
   // same here: there prolly is a "one-funciton" solution via a formgroup or something but nah, this works :D
-  getPomoErrorMessage() {
-    if (this.pomoCheck.hasError('required')) {
-      return 'You must enter a value';
-    }
-    return this.pomoCheck.hasError('pattern') ? 'Number between 1 and 60' : '';
-  }
-  getShortErrorMessage() {
-    if (this.shortCheck.hasError('required')) {
-      return 'You must enter a value';
-    }
-    return this.shortCheck.hasError('pattern') ? 'Number between 1 and 60' : '';
-  }
-  getLongErrorMessage() {
-    if (this.longCheck.hasError('required')) {
-      return 'You must enter a value';
-    }
-    return this.longCheck.hasError('pattern') ? 'Number between 1 and 60' : '';
-  }
+get errorMessage() {
+  // Checks pomodoro settings field
+  if (this.pomoCheck.hasError('required')) return this.errorMessageTextRequired;
+  if (this.pomoCheck.hasError('pattern')) return this.errorMessageTextPattern;
+  // Checks short settings field
+  if (this.shortCheck.hasError('pattern')) return this.errorMessageTextPattern;
+  if (this.shortCheck.hasError('required')) return this.errorMessageTextRequired;
+  // Checks pomodoro settings field
+  if (this.longCheck.hasError('pattern')) return this.errorMessageTextPattern;
+  if (this.longCheck.hasError('required')) return this.errorMessageTextRequired;
+  return "";
+}
+
   // on click with errors -> animation
   onClickSave(pomoValue : string, shortValue : string, longValue : string): void {
-    if (this.getPomoErrorMessage() != '' || this.getLongErrorMessage() != '' ||
-     this.getShortErrorMessage() != '') {
+    if (this.errorMessage != "") {
        console.log("There was at least one error")
       //  angry wiggle soon
      }
@@ -64,7 +61,7 @@ export class SettingsDialogComponent implements OnInit {
       } else {
         this.timer.currentTimeMs = this.timer.durationMsLong;
       }
-      this.timer.killTimer();
+      this.timer.resetTimer();
     }
   }
   onDismiss(): void {

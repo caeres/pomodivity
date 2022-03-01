@@ -7,20 +7,20 @@
 <div mat-dialog-content class="settings-dialog-content"> 
   <mat-form-field appearance="fill">
     <mat-label>Pomodoro Duration</mat-label>
-    <mat-error *ngIf="pomoCheck.invalid">{{getPomoErrorMessage()}}</mat-error>
+    <mat-error *ngIf="pomoCheck.invalid">{{errorMessage}}</mat-error>
     <input matInput #pomodoro ng-init="25" value="25" [formControl]="pomoCheck" required pattern>
     <!-- <mat-hint>Pomodoro Duration</mat-hint> -->
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Short Break Duration</mat-label>
-    <mat-error *ngIf="shortCheck.invalid">{{getShortErrorMessage()}}</mat-error>
+    <mat-error *ngIf="shortCheck.invalid">{{errorMessage}}</mat-error>
     <input matInput #shortBreak ng-init="5" value="5" [formControl]="shortCheck" required pattern>
     <!-- <mat-hint>Short Break Duration</mat-hint> -->
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Long Break Duration</mat-label>
     <input matInput #longBreak ng-init="10" value="10" [formControl]="longCheck" required pattern>
-    <mat-error *ngIf="longCheck.invalid">{{getLongErrorMessage()}}</mat-error>
+    <mat-error *ngIf="longCheck.invalid">{{errorMessage}}</mat-error>
     <!-- <mat-hint>Long Break Duration</mat-hint> -->
   </mat-form-field>
 </div>
