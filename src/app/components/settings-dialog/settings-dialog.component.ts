@@ -30,19 +30,19 @@ export class SettingsDialogComponent implements OnInit {
     if (this.pomoCheck.hasError('required')) {
       return 'You must enter a value';
     }
-    return this.pomoCheck.hasError('pattern') ? 'Enter a number between 1 and 60' : '';
+    return this.pomoCheck.hasError('pattern') ? 'Number between 1 and 60' : '';
   }
   getShortErrorMessage() {
     if (this.shortCheck.hasError('required')) {
       return 'You must enter a value';
     }
-    return this.shortCheck.hasError('pattern') ? 'Enter a number between 1 and 60' : '';
+    return this.shortCheck.hasError('pattern') ? 'Number between 1 and 60' : '';
   }
   getLongErrorMessage() {
     if (this.longCheck.hasError('required')) {
       return 'You must enter a value';
     }
-    return this.longCheck.hasError('pattern') ? 'Enter a number between 1 and 60' : '';
+    return this.longCheck.hasError('pattern') ? 'Number between 1 and 60' : '';
   }
   // on click with errors -> animation
   onClickSave(pomoValue : string, shortValue : string, longValue : string): void {
@@ -52,21 +52,11 @@ export class SettingsDialogComponent implements OnInit {
       //  angry wiggle soon
      }
     else {
-      this.timer.durationMsPomodoro = this.minuteToMsPipe.transform(parseInt(pomoValue));
-      this.timer.durationMsShort = this.minuteToMsPipe.transform(parseInt(shortValue));
-      this.timer.durationMsLong = this.minuteToMsPipe.transform(parseInt(longValue));
+      this.timer.userDurationMsPomodoro(this.minuteToMsPipe.transform(parseInt(pomoValue)));
+      this.timer.userDurationMsShort(this.minuteToMsPipe.transform(parseInt(shortValue)));
+      this.timer.userDurationMsLong(this.minuteToMsPipe.transform(parseInt(longValue)));
       console.log("The timer settings have been updated")
       this.dialogRef.close();
-      // update currently shown timer -> check which timer is active, switch display to current timer duration
-      // didint work cuz no return statements? help me oh great phillip
-      // switch(this.timer.currentType) {
-      //   case TimerType.pomodoro: 
-      //     this.timer.currentTimeMs = this.timer.durationMsPomodoro;
-      //   case TimerType.short:
-      //     this.timer.currentTimeMs = this.timer.durationMsShort;
-      //   case TimerType.long:
-      //     this.timer.currentTimeMs = this.timer.durationMsLong;
-      // }
       if (this.timer.currentType == TimerType.pomodoro) {
         this.timer.currentTimeMs = this.timer.durationMsPomodoro;
       } else if (this.timer.currentType == TimerType.short) {
@@ -74,6 +64,7 @@ export class SettingsDialogComponent implements OnInit {
       } else {
         this.timer.currentTimeMs = this.timer.durationMsLong;
       }
+      this.timer.killTimer();
     }
   }
   onDismiss(): void {
