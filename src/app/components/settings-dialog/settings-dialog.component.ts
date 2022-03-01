@@ -3,7 +3,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { TimerStateService, TimerType } from 'src/app/services/timer-state.service';
 import { HeaderComponent } from '../header/header.component';
 import { FormControl, Validators } from '@angular/forms';
-import { ConvertTimePipe } from 'src/app/pipes/convert-time.pipe';
 
 @Component({
   selector: 'app-settings-dialog',
@@ -23,8 +22,7 @@ export class SettingsDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<HeaderComponent>,
-    public timer: TimerStateService,
-    public minuteToMsPipe: ConvertTimePipe
+    public timer: TimerStateService
   ) { }
   ngOnInit(): void {  }
 
@@ -49,9 +47,9 @@ get errorMessage() {
       //  angry wiggle soon
      }
     else {
-      this.timer.userDurationMsPomodoro(this.minuteToMsPipe.transform(parseInt(pomoValue)));
-      this.timer.userDurationMsShort(this.minuteToMsPipe.transform(parseInt(shortValue)));
-      this.timer.userDurationMsLong(this.minuteToMsPipe.transform(parseInt(longValue)));
+      this.timer.userDurationMsPomodoro(parseInt(pomoValue)*60*1000);
+      this.timer.userDurationMsShort(parseInt(shortValue)*60*1000);
+      this.timer.userDurationMsLong(parseInt(longValue)*60*1000);
       console.log("The timer settings have been updated")
       this.dialogRef.close();
       if (this.timer.currentType == TimerType.pomodoro) {
