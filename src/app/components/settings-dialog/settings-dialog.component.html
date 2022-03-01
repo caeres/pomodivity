@@ -1,10 +1,10 @@
-<div class="settings-dialog-header">
+<div class="header">
   <h1 mat-dialog-title>Timer Settings (in minutes)</h1>
-  <button class="settings-dialog-close-btn" (click)="onDismiss()">
+  <button (click)="onDismiss()">
     <span>&times;</span>
   </button>
 </div>
-<div mat-dialog-content class="settings-dialog-content"> 
+<div mat-dialog-content class="content"> 
   <mat-form-field appearance="fill">
     <mat-label>Pomodoro Duration</mat-label>
     <mat-error *ngIf="pomoCheck.invalid">{{errorMessage}}</mat-error>
@@ -25,7 +25,7 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button class="settings-dialog-save-btn" (click)="onClickSave(pomodoro.value, shortBreak.value, longBreak.value)">
+  <button class="save-btn" (click)="onClickSave(pomodoro.value, shortBreak.value, longBreak.value)">
     Save Settings
   </button>
 </div>
