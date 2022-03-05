@@ -19,7 +19,7 @@ I want to slighty change the design tho, maybe buttons to the side and they disa
         <!-- evtl mit dem animierten progress bar -->
         <!-- <mat-progress-bar mode="determinate" [value]="40"></mat-progress-bar>  -->
         <div class="btn-start-wrapper">
-            <button [ngClass]="bigButtonClass" [innerText]="startButtonLabel" (click)="onClickStartButton()"></button>
+            <button [ngClass]="bigButtonClass" (click)="onClickStartButton()">{{startButtonLabel}}</button>
         </div>
     </div>
 </div>

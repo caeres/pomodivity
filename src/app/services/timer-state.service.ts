@@ -3,24 +3,19 @@ import { Injectable } from '@angular/core';
 import Timer from 'tiny-timer';
 import { ContentBoxComponent } from '../components/content-box/content-box.component';
 
-const standardDurationMsPomodoro = 25*60*1000;
-const standardDurationMsShort = 5*60*1000;
-const standardDurationMsLong = 10*60*1000;
-
 @Injectable({
   providedIn: 'root'
 })
-
 
 export class TimerStateService{
 
   public isTimerRunning = false;
   // iffy
-  public timerJustFinished = false;
-  public durationMsPomodoro: number;
-  public durationMsShort: number;
-  public durationMsLong: number;
-  public currentTimeMs: number;
+  public isTimerDone = false;
+  public durationMsPomodoro = 25*60*1000;
+  public durationMsShort = 5*60*1000;
+  public durationMsLong = 5*60*1000;
+  public currentTimeMs:number = this.durationMsPomodoro;
   
   // dont thionk i have to do this in a function timer alsawys happy
   public timer = new Timer({interval: 1000, stopwatch: false});
@@ -46,9 +41,9 @@ export class TimerStateService{
   //   localStorage.setItem("userDurationMsPomodoro", durationUpdate.toString());
   // }
 
-  userDurationMsPomodoro(durationMsUpdate: number) {
-    this.durationMsPomodoro = durationMsUpdate;
-    localStorage.setItem("userDurationMsPomodoro", durationMsUpdate.toString());
+  userDurationMsPomodoro(newDurationMs: number) {
+    this.durationMsPomodoro = newDurationMs;
+    localStorage.setItem("userDurationMsPomodoro", newDurationMs.toString());
   }
   userDurationMsShort(durationMsUpdate: number) {
     this.durationMsShort = durationMsUpdate;
@@ -73,11 +68,11 @@ export class TimerStateService{
         this.isTimerRunning = true;
         console.log("timer was started, state now true")
     }
-    this.timerJustFinished = false;
+    this.isTimerDone = false;
   }
 
   // when settings change while timer was running: reset timer
-  killTimer() {
+  resetTimer() {
     this.timer.stop();
   }
 
@@ -88,23 +83,17 @@ export class TimerStateService{
     });
     this.timer.on('done', () => {
       this.currentTimeMs = this.durationMs;
-      this.timerJustFinished = true;
+      this.isTimerDone = true;
       console.log("timer done");
     });
     if (localStorage.getItem("userDurationMsPomodoro") != null) {
       this.durationMsPomodoro = parseInt(JSON.parse(localStorage.getItem("userDurationMsPomodoro")!));
-    } else {
-      this.durationMsPomodoro = standardDurationMsPomodoro;
     }
     if (localStorage.getItem("userDurationMsShort") != null) {
       this.durationMsShort = parseInt(JSON.parse(localStorage.getItem("userDurationMsShort")!));
-    } else {
-      this.durationMsShort = standardDurationMsShort;
     }
     if (localStorage.getItem("userDurationMsLong") != null) {
       this.durationMsLong = parseInt(JSON.parse(localStorage.getItem("userDurationMsLong")!));
-    } else {
-      this.durationMsLong = standardDurationMsLong;
     }
     this.currentTimeMs = this.durationMsPomodoro;
   }

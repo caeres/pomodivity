@@ -13,8 +13,6 @@ import { TimerButtonComponent } from './components/timer-button/timer-button.com
 import { HeaderComponent } from './components/header/header.component';
 import { SettingsDialogComponent } from './components/settings-dialog/settings-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// delete or make usable in the future
-import { ConvertTimePipe } from './pipes/convert-time.pipe';
 
 
 @NgModule({
@@ -35,7 +33,7 @@ import { ConvertTimePipe } from './pipes/convert-time.pipe';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ConvertTimePipe],
+  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [SettingsDialogComponent]
 })

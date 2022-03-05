@@ -24,7 +24,7 @@ export class ContentBoxComponent implements OnInit {
     if(this.timer.isTimerRunning) {
       alert("You cant swap the displayed timer while a the timer is running. Please pause before.");
     } else {
-      this.timer.killTimer();
+      this.timer.resetTimer();
       this.timer.currentType = TimerType.pomodoro;
       this.timer.currentTimeMs = this.timer.durationMsPomodoro;
     }    
@@ -33,7 +33,7 @@ export class ContentBoxComponent implements OnInit {
     if(this.timer.isTimerRunning) {
       alert("You cant swap the displayed timer while a the timer is running. Please pause before.");
     } else {   
-      this.timer.killTimer();
+      this.timer.resetTimer();
       this.timer.currentType = TimerType.short;
       this.timer.currentTimeMs = this.timer.durationMsShort;
     }
@@ -42,19 +42,14 @@ export class ContentBoxComponent implements OnInit {
     if(this.timer.isTimerRunning) {
       alert("You cant swap the displayed timer while a the timer is running. Please pause before.");
     } else {   
-      this.timer.killTimer();
+      this.timer.resetTimer();
       this.timer.currentType = TimerType.long;
       this.timer.currentTimeMs = this.timer.durationMsLong;
     }
   }
   onClickStartButton() {
     this.timer.interactStartButton();
-    if (this.timer.isTimerRunning) {
-      this.bigButtonClass = "btn-stop";
-      this.startButtonLabel = "Stop";
-    } else {
-      this.bigButtonClass = "btn-start";
-      this.startButtonLabel = "Start";
-    }
+    this.timer.isTimerRunning ? this.bigButtonClass = "btn-stop" : this.bigButtonClass ="btn-start";
+    this.timer.isTimerRunning ? this.startButtonLabel = "Stop" : this.startButtonLabel ="Start";
   }
 }

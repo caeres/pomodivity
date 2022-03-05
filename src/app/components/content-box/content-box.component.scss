@@ -15,7 +15,7 @@
 
 .timer
 {
-    font-size: 130px;
+    font-size: 8rem;
     font-weight: bold;
     // maybe black is better, but ill chill with this for a sec
     border-bottom: solid 2px var(--darkish-grey);
@@ -39,8 +39,6 @@
         border: none;
         transition: color 0.5s ease-in-out 0.5s;
         cursor: pointer;
-
-        background-color: aliceblue;
     }
     .btn-start
     {

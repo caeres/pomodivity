@@ -1,32 +1,39 @@
-<div class="settings-dialog-header">
-  <h1 mat-dialog-title>Timer Settings (in minutes)</h1>
-  <button class="settings-dialog-close-btn" (click)="onDismiss()">
-    <span>&times;</span>
-  </button>
+<div class="test">
+  <div class="header">
+    <h1 mat-dialog-title>Timer Settings (in minutes)</h1>
+    <button (click)="onDismiss()">
+      <span>&times;</span>
+    </button>
+  </div>
+  <mat-dialog-content class="animate__animated" [class.animate__shakeX]="isWiggling">
+    <div class="content">
+      <mat-form-field appearance="fill">
+        <mat-label>Pomodoro Duration</mat-label>
+        <mat-error *ngIf="pomoCheck.invalid">{{errorMessage}}</mat-error>
+        <input matInput #pomodoro ng-init="25" value="25" [formControl]="pomoCheck" required pattern>
+        <!-- <mat-hint>Pomodoro Duration</mat-hint> -->
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Short Break Duration</mat-label>
+        <mat-error *ngIf="shortCheck.invalid">{{errorMessage}}</mat-error>
+        <input matInput #shortBreak ng-init="5" value="5" [formControl]="shortCheck" required pattern>
+        <!-- <mat-hint>Short Break Duration</mat-hint> -->
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Long Break Duration</mat-label>
+        <input matInput #longBreak ng-init="10" value="10" [formControl]="longCheck" required pattern>
+        <mat-error *ngIf="longCheck.invalid">{{errorMessage}}</mat-error>
+        <!-- <mat-hint>Long Break Duration</mat-hint> -->
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button class="save-btn" (click)="onClickSave(pomodoro.value, shortBreak.value, longBreak.value)">
+      Save Settings
+    </button>
+  </mat-dialog-actions>
+  <!-- <mat-dialog-action align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+  </mat-dialog-actions> -->
 </div>
-<div mat-dialog-content class="settings-dialog-content"> 
-  <mat-form-field appearance="fill">
-    <mat-label>Pomodoro Duration</mat-label>
-    <mat-error *ngIf="pomoCheck.invalid">{{getPomoErrorMessage()}}</mat-error>
-    <input matInput #pomodoro ng-init="25" value="25" [formControl]="pomoCheck" required pattern>
-    <!-- <mat-hint>Pomodoro Duration</mat-hint> -->
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Short Break Duration</mat-label>
-    <mat-error *ngIf="shortCheck.invalid">{{getShortErrorMessage()}}</mat-error>
-    <input matInput #shortBreak ng-init="5" value="5" [formControl]="shortCheck" required pattern>
-    <!-- <mat-hint>Short Break Duration</mat-hint> -->
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Long Break Duration</mat-label>
-    <input matInput #longBreak ng-init="10" value="10" [formControl]="longCheck" required pattern>
-    <mat-error *ngIf="longCheck.invalid">{{getLongErrorMessage()}}</mat-error>
-    <!-- <mat-hint>Long Break Duration</mat-hint> -->
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button class="settings-dialog-save-btn" (click)="onClickSave(pomodoro.value, shortBreak.value, longBreak.value)">
-    Save Settings
-  </button>
-</div>
-
