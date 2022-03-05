@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
+    "@angular/service-worker": "~13.1.0",
     "rxjs": "~7.4.0",
     "tiny-timer": "^1.6.0",
     "ts-localstorage": "^1.1.0",
