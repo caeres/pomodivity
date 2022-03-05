@@ -1,0 +1,81 @@
+{
+  "configVersion": 1,
+  "timestamp": 1646524647677,
+  "index": "/pomodivity/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/pomodivity/favicon.ico",
+        "/pomodivity/index.html",
+        "/pomodivity/main.3bd199f32bc74090.js",
+        "/pomodivity/manifest.webmanifest",
+        "/pomodivity/polyfills.02dce8242c6a8e73.js",
+        "/pomodivity/runtime.561c8f8e935256c3.js",
+        "/pomodivity/styles.e8a42bb089f40094.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/pomodivity/assets/icons/icon-128x128.png",
+        "/pomodivity/assets/icons/icon-144x144.png",
+        "/pomodivity/assets/icons/icon-152x152.png",
+        "/pomodivity/assets/icons/icon-192x192.png",
+        "/pomodivity/assets/icons/icon-384x384.png",
+        "/pomodivity/assets/icons/icon-512x512.png",
+        "/pomodivity/assets/icons/icon-72x72.png",
+        "/pomodivity/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/pomodivity/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/pomodivity/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/pomodivity/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/pomodivity/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/pomodivity/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/pomodivity/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/pomodivity/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/pomodivity/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/pomodivity/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/pomodivity/index.html": "5d771f00973e268e91814657cd6976253fcb6870",
+    "/pomodivity/main.3bd199f32bc74090.js": "f830566f935db3b2aea0edb2fe5fba56ffe3fb8a",
+    "/pomodivity/manifest.webmanifest": "22c7f4e4e71bbb271ec1401e6720f99da072c5db",
+    "/pomodivity/polyfills.02dce8242c6a8e73.js": "15fd4daed5b07a94ccb496999d9fe6a32b5324bd",
+    "/pomodivity/runtime.561c8f8e935256c3.js": "f456bab0ecfcfccc7839074eba2b9dc995c5bdd7",
+    "/pomodivity/styles.e8a42bb089f40094.css": "0e3f606e62161ea4046b175cbc505ea938349c80"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
