@@ -6,28 +6,18 @@ import { FormControl, Validators } from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 // animation fuckery lets go
+
+//WHY IS THE ANIMATION THINGY SO FUCKONG CANCER
 @Component({
   selector: 'app-settings-dialog',
   templateUrl: './settings-dialog.component.html',
   styleUrls: ['./settings-dialog.component.scss'],
-  animations: [
-    trigger('hasErrors', [
-      state('nothingHappened', style({})),
-      state('errorFound', style({
-        backgroundColor: 'blue'
-      })),
-      transition('nothingHappened => errorFound', [
-        animate('2s')
-      ]), 
-      transition('errorFound => nothingHappened', [
-        animate('2s')
-      ])
-    ])
-  ]
+  animations: []
 })
 export class SettingsDialogComponent implements OnInit {
 
-
+  public isWiggling = false;
+  
   isfucked = false;
   // pretty sure a simple formGroup wouldve been possible as well but i cannot be arsed rn tbh
   pomoCheck = new FormControl('', [Validators.required, Validators.pattern('^([1-9]|[1-5][0-9]|60])$')]);
@@ -63,8 +53,11 @@ export class SettingsDialogComponent implements OnInit {
 onClickSave(pomoValue : string, shortValue : string, longValue : string): void {
   if (this.errorMessage != "") {
     console.log("There was at least one error");
-    this.isfucked = !this.isfucked;
-  //  angry wiggle soon
+    setTimeout(() => {
+
+      this.isWiggling = false;
+    }, 3000)
+    this.isWiggling = true;
   } else {
       this.timer.userDurationMsPomodoro(parseInt(pomoValue)*60*1000);
       this.timer.userDurationMsShort(parseInt(shortValue)*60*1000);

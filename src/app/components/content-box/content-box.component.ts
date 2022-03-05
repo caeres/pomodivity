@@ -50,6 +50,6 @@ export class ContentBoxComponent implements OnInit {
   onClickStartButton() {
     this.timer.interactStartButton();
     this.timer.isTimerRunning ? this.bigButtonClass = "btn-stop" : this.bigButtonClass ="btn-start";
-    this.timer.isTimerRunning ? this.startButtonLabel = "Stop" : this.bigButtonClass ="Start";
+    this.timer.isTimerRunning ? this.startButtonLabel = "Stop" : this.startButtonLabel ="Start";
   }
 }
